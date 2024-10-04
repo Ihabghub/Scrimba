@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="index.css">
+    </head>
+
+    <body>
+        <h1>Blackjack</h1>
+        <p id="message-el">Want to play a round?</p>
+        <p id="cards-el">Cards:</p>
+        <p id="sum-el">Sum:</p>
+        <button onclick="startGame()">START GAME</button>
+        <!-- 1. Create a NEW CARD button, make it run newCard() on click -->
+        <button onclick="newCard()">NEW CARD</button>
+        <style>
+            body {
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
+                background-color: #016f32;
+                font-weight: bold;
+                color: white;
+                text-align: center;
+            }
+
+            h1 {
+                color: goldenrod;
+            }
+
+            #message-el {
+                font-style: italic;
+            }
+
+            /* 3. Make sure that the two buttons have some space between
+each other when they are rendered out vertically */
+            button {
+                color: #016f32;
+                width: 150px;
+                background: goldenrod;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                font-weight: bold;
+                border: none;
+                border-radius: 2px;
+                margin-bottom: 4px;
+
+            }
+        </style>
+        <script>
+            let firstCard = 10
+            let secondCard = 4
+            let sum = firstCard + secondCard
+            let hasBlackJack = false
+            let isAlive = true
+            let message = ""
+            let messageEl = document.getElementById("message-el")
+            let sumEl = document.getElementById("sum-el")
+            let cardsEl = document.getElementById("cards-el")
+
+            function startGame() {
+                cardsEl.textContent = "Cards: " + firstCard + " " + secondCard
+                sumEl.textContent = "Sum: " + sum
+                if (sum <= 20) {
+                    message = "Do you want to draw a new card?"
+                } else if (sum === 21) {
+                    message = "You've got Blackjack!"
+                    hasBlackJack = true
+                } else {
+                    message = "You're out of the game!"
+                    isAlive = false
+                }
+                messageEl.textContent = message
+            }
+
+            function newCard() {
+                console.log("Drawing a new card from the deck!")
+            }
+
+        </script>
+    </body>
+
+</html>
